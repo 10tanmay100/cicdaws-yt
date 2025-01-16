@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Prediction App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-container {
+            width: 50%;
+            margin: auto;
+            padding: 1em;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Iris Flower Prediction App</h1>
+    <div class="form-container">
+        <form action="/predict" method="post">
+            <label for="sepal_length">Sepal Length (cm):</label>
+            <input type="number" step="0.01" name="sepal_length" required>
+
+            <label for="sepal_width">Sepal Width (cm):</label>
+            <input type="number" step="0.01" name="sepal_width" required>
+
+            <label for="petal_length">Petal Length (cm):</label>
+            <input type="number" step="0.01" name="petal_length" required>
+
+            <label for="petal_width">Petal Width (cm):</label>
+            <input type="number" step="0.01" name="petal_width" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+        <div class="result">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
