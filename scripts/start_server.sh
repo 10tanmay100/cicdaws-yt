@@ -15,9 +15,10 @@ fi
 
 
 #navigate to app dir
-cd "$APP_DIR"
+
 
 sudo -i
+cd "$APP_DIR"
 #set up virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
