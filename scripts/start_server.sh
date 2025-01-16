@@ -16,8 +16,8 @@ fi
 
 #navigate to app dir
 
+## making root control
 
-sudo -i
 cd "$APP_DIR"
 #set up virtual environment
 apt install python3-venv -y
