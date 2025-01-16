@@ -15,7 +15,7 @@ fi
 
 
 #navigate to app dir
-cd $APP_DIR
+cd "$APP_DIR"
 
 #set up virtual environment
 python3 -m venv .venv
