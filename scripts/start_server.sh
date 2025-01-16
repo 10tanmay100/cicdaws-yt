@@ -20,7 +20,7 @@ fi
 
 cd "$APP_DIR"
 #set up virtual environment
-apt install python3-venv -y
+
 python3 -m venv .venv
 source .venv/bin/activate
 
