@@ -1,37 +1,37 @@
+#!/bin/bash
+
+# Application directory
 APP_DIR="/home/ubuntu/ml_project"
 LOG_FILE="$APP_DIR/app_output.log"
 
-# Check for existing Flask Application Process
-echo "Checking for existing Flask Application Process"
+# Check for existing Flask application processes
+echo "Checking for existing Flask application processes..."
 EXISTING_PID=$(pgrep -f "python3 app.py")
 
-
-if [-n "${EXISTING_PID}" ]; then
-    echo "Killing existing Flask Application Process"
-    kill -9 $EXISTING_PID
-else:
-    echo "No existing Flask Application Process found"
+if [ -n "$EXISTING_PID" ]; then
+    echo "Found running Flask application process with PID: $EXISTING_PID. Terminating it..."
+    kill -9 "$EXISTING_PID"
+    echo "Terminated previous Flask application process."
+else
+    echo "No existing Flask application processes found."
 fi
 
-
-#navigate to app dir
-
-## making root control
-
+# Navigate to the application directory
 cd "$APP_DIR"
-#set up virtual environment
 
+# Set up virtual environment
+echo "Setting up the virtual environment..."
 python3 -m venv .venv
 source .venv/bin/activate
 
-#install dependencies
-echo "Installing dependenciees"
+# Install dependencies
+echo "Installing dependencies..."
 python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 
-#run the app
+# Start the Flask application with nohup
+echo "Starting Flask application..."
 nohup python3 app.py > "$LOG_FILE" 2>&1 &
 
 NEW_PID=$!
-
-echo "Flask application started with PID $NEW_PID
+echo "Flask application started with PID: $NEW_PID"
